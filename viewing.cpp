@@ -6,18 +6,13 @@
  */
 
 #include "viewing.h"
-#include "shapes.h"
-#include "util.h"
 #include <iostream>
 
 
 void drawScene()
 {
 	glPushMatrix();
-		drawFloor();
-		drawTorus();
-		drawSphere();
-		drawBox_Teapot();
+		/* do things */
 	glPopMatrix();
 }
 
