@@ -8,16 +8,30 @@
 #ifndef CURVE_H_
 #define CURVE_H_
 
-/* Worry about surfaces at a later point */
-typedef struct Curve {
-	int vDegree, uDegree;
-	float transform[4][4];
-	float ** points;
-	~Curve();
-} Curve;
+#define CLAMP(x, low, high)  (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
+#define MIN_PRECISION 1
+#define MAX_PRECISION 5
 
-Curve::~Curve() {
-	delete[] points;
-}
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+
+/* Worry about surfaces at a later point */
+class Curve {
+private:
+	int uDegree, vDegree;
+	float * transform;
+	float ** points;
+	int precision;
+	float bernstein(int i, int n, float t);
+	void drawCurve();
+	void drawSurface();
+	int factorial(int n);
+public:
+	Curve(int uDegree, int vDegree, float * transform, float ** points, int precision);
+	void draw();
+	void setPrecision(int precision);
+	~Curve();
+};
 
 #endif /* CURVE_H_ */
