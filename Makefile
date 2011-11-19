@@ -25,7 +25,7 @@ CFLAGS = -Wall -g $(INCDIRS) $(LIBDIR) -framework GLUT -framework OpenGL $(LDFLA
 endif
 
 all: $(OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LFLAGS) $(HEADERS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS) $(HEADERS)
 main.o: $(SRC) $(HEADERS)
 	$(CC) $(CFLAGS) -c main.cpp $(HEADERS)
 Curve.o: $(SRC) $(HEADERS)
